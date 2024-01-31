@@ -58,7 +58,7 @@ def send_weather(access_token, weather):
     body = {
         "touser": openId.strip(),
         "template_id": weather_template_id.strip(),
-        "url": "https://weixin.qq.com",
+        "url": "http://nmc.cn/publish/forecast/ANM/chifeng.html",
         "data": {
             "weather": {
                 "value": weather[0]
