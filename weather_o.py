@@ -79,25 +79,25 @@ def send_weather(access_token, weather, openId):
                 "value": weather[7]
             },
             "ff": {
-                "value": weather[8] + "kmh"
+                "value": weather[8] + "(kmh)"
             },
             "Gust": {
-                "value": weather[9] + "kmh"
+                "value": weather[9] + "(kmh)"
             },
             "P0": {
-                "value": weather[10] + "hPa"
+                "value": weather[10] + "(hPa)"
             },
             "P_sea": {
-                "value": weather[11] + "hPa"
+                "value": weather[11] + "(hPa)"
             },
             "P": {
-                "value": weather[13] + "Tnd"
+                "value": weather[12] + "(Tnd)"
             },
             "Prec": {
-                "value": weather[14] + "mm"
+                "value": weather[13] + "(mm)"
             },
             "Vis": {
-                "value": weather[15] + "km"
+                "value": weather[14] + "(km)"
             }
         }
     }
