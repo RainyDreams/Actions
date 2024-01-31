@@ -21,10 +21,15 @@ def get_third_row(url):
     html = response.text
     # 使用BeautifulSoup解析网页代码
     soup = BeautifulSoup(html, 'html.parser')
-    # 找到table元素
-    table = soup.find('table')
+    # 找到所有的table元素
+    tables = soup.find_all('table')
+    # 确保至少存在5个table
+    if len(tables) < 5:
+        raise ValueError("网页中至少需要5个table元素")
+    # 找到第5个table元素
+    target_table = tables[4]
     # 找到第三行(tr)
-    third_row = table.find_all('tr')[2]
+    third_row = target_table.find_all('tr')[2]
     # 获取第三行的td数据，组成一个数组
     row_data = [cell.text.strip() for cell in third_row.find_all('td')]
     return row_data
