@@ -2,7 +2,7 @@ import os
 import requests
 import json
 from bs4 import BeautifulSoup
-
+import datetime 
 
 appID = os.environ.get("APP_ID")
 appSecret = os.environ.get("APP_SECRET")
@@ -11,14 +11,18 @@ weather_template_id = os.environ.get("TEMPLATE_ID_OGIMET")
 uid = weather_template_id.strip() or "ljryQcnRHQXQGWUGv8i8zoGsOp4AUKpYiiHa28eVSDQ"
 openId_list = openId_str.split(",")
 
-from datetime import date
-today = date.today()
+today = datetime.date.today()
+tomorrow = today + datetime.timedelta(days=1)
 today_str = today.strftime("%Y年%m月%d日")
 year = today.year
 month = today.month
 day = today.day
-url_ = 'http://www.ogimet.com/cgi-bin/gsynres?lang=en&ind=54218&ndays=1&ano={}&mes={}&day={}&hora=00&ord=REV&Send=Send'\
-    .format(year,month,day)
+_y = tomorrow.year
+_m = tomorrow.month
+_d = tomorrow.day
+
+url_ = 'https://www.ogimet.com/cgi-bin/gsynres?ind=54218&lang=en&decoded=yes&ndays=2&ano={}&mes={}&day={}&hora=00'\
+    .format(_y,_m,_d)
 
 def get_weather():
     # 发送GET请求获取网页代码
@@ -32,12 +36,11 @@ def get_weather():
         raise ValueError("网页中至少需要3个table元素")
     target_table = tables[2]
     # 找到第三行(tr)
-    third_row = target_table.find_all('tr')[2]
+    third_row = target_table.find_all('tr')[1]
     # 获取第三行的td数据，组成一个数组
     row_data = [cell.text.strip() for cell in third_row.find_all('td')]
     print(row_data)
     return row_data
-
 
 def get_access_token():
     # 获取access token的url
@@ -55,40 +58,40 @@ def send_weather(access_token, weather, openId):
         "url": url_,
         "data": {
             "Date": {
-                "value": today_str
+                "value": weather[0] + " " +  weather[1] + " UTC"
             },
             "Max_Temperature": {
-                "value": weather[1]
-            },
-            "Min_Temperature": {
                 "value": weather[2]
             },
-            "Avg_Temperature": {
+            "Min_Temperature": {
                 "value": weather[3]
             },
-            "Td_Avg": {
+            "Avg_Temperature": {
                 "value": weather[4]
             },
-            "Hr_Avg": {
+            "Td_Avg": {
                 "value": weather[5]
             },
-            "Dir_Wind": {
+            "Hr_Avg": {
                 "value": weather[6]
             },
-            "Int_Wind": {
+            "Dir_Wind": {
                 "value": weather[7]
             },
-            "Gust_Wind": {
+            "Int_Wind": {
                 "value": weather[8]
             },
-            "Pres_S_lev": {
+            "Gust_Wind": {
                 "value": weather[9]
             },
-            "Prec": {
+            "Pres_S_lev": {
                 "value": weather[10]
             },
-            "Vis": {
+            "Prec": {
                 "value": weather[11]
+            },
+            "Vis": {
+                "value": weather[12]
             }
         }
     }

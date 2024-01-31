@@ -6,7 +6,7 @@ name: ogimet推送
 on:
   schedule:
     # 设置启动时间，为 UTC 时间, UTC23点 对应北京时间早7点
-    - cron : '30 0 * * *'
+    - cron: "30 */3 * * *" # 每隔2小时的第30分钟执行
   workflow_dispatch:
 
 permissions:
