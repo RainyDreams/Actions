@@ -10,8 +10,8 @@ appSecret = os.environ.get("APP_SECRET")
 # 收信人ID即 用户列表中的微信号
 openId = os.environ.get("OPEN_ID")
 # 天气预报模板ID
-weather_template_id = os.environ.get("NMC_ID")
-print("NMC_ID:", weather_template_id)
+# weather_template_id = os.environ.get("NMC_ID")
+# print("NMC_ID:", weather_template_id)
 
 
 def get_weather():
@@ -58,7 +58,7 @@ def send_weather(access_token, weather):
     # data就按这种格式写，time和text就是之前{{time.DATA}}中的那个time，value就是你要替换DATA的值
     body = {
         "touser": openId.strip(),
-        "template_id": weather_template_id.strip(),
+        "template_id": "knyCR6ngBJ3hnf-I-xrfjO2A6iCwuH0p4iQyF8YVPq4",
         "url": "http://nmc.cn/publish/forecast/ANM/chifeng.html",
         "data": {
             "weather": {
