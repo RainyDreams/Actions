@@ -13,6 +13,7 @@ openId_list = openId_str.split(",")
 
 from datetime import date
 today = date.today()
+today_str = today.strftime("%Y年%m月%d日")
 year = today.year
 month = today.month
 day = today.day
@@ -40,9 +41,9 @@ def get_weather():
 
 def get_access_token():
     # 获取access token的url
-    url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={}&secret={}' \
+    urlW = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={}&secret={}' \
         .format(appID.strip(), appSecret.strip())
-    response = requests.get(url).json()
+    response = requests.get(urlW).json()
     print(response)
     access_token = response.get('access_token')
     return access_token
@@ -54,7 +55,7 @@ def send_weather(access_token, weather, openId):
         "url": url_,
         "data": {
             "Date": {
-                "value": today
+                "value": today_str
             },
             "Max_Temperature": {
                 "value": weather[1]
