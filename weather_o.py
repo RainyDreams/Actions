@@ -24,10 +24,10 @@ def get_third_row(url):
     # 找到所有的table元素
     tables = soup.find_all('table')
     # 确保至少存在5个table
-    if len(tables) < 5:
+    if len(tables) < 3:
         raise ValueError("网页中至少需要5个table元素")
     # 找到第5个table元素
-    target_table = tables[4]
+    target_table = tables[2]
     # 找到第三行(tr)
     third_row = target_table.find_all('tr')[2]
     # 获取第三行的td数据，组成一个数组
@@ -43,7 +43,7 @@ def get_weather():
     url = 'https://www.ogimet.com/cgi-bin/gsynres?lang=en&ind=54218&ndays=1&ano={}&mes={}&day={}&hora=00&ord=REV&Send=Send'\
         .format(year,month,day)
     data = get_third_row(url)
-    print(url)
+    # print(url)
     return data
 
 
