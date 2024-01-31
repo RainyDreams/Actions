@@ -37,7 +37,7 @@ def get_weather():
     day = today.day
     url = 'https://www.ogimet.com/cgi-bin/gsynres?lang=en&ind=54218&ndays=1&ano={}&mes={}&day={}&hora=00&ord=REV&Send=Send'\
         .format(year,month,day)
-    data = get_third_row(row)
+    data = get_third_row(url)
     return data
 
 
