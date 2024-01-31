@@ -65,31 +65,31 @@ def send_weather(access_token, weather, openId):
             "Date": {
                 "value": today
             },
-            "Max Temperature": {
+            "Max_Temperature": {
                 "value": weather[1]
             },
-            "Min Temperature": {
+            "Min_Temperature": {
                 "value": weather[2]
             },
-            "Avg Temperature": {
+            "Avg_Temperature": {
                 "value": weather[3]
             },
-            "Td Avg": {
+            "Td_Avg": {
                 "value": weather[4]
             },
-            "Hr. Avg": {
+            "Hr_Avg": {
                 "value": weather[5]
             },
-            "Dir. Wind": {
+            "Dir_Wind": {
                 "value": weather[6]
             },
-            "Int. Wind": {
+            "Int_Wind": {
                 "value": weather[7]
             },
-            "Gust Wind": {
+            "Gust_Wind": {
                 "value": weather[8]
             },
-            "Pres. s.lev": {
+            "Pres_S_lev": {
                 "value": weather[9]
             },
             "Prec": {
