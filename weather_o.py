@@ -3,7 +3,7 @@ import requests
 import json
 from bs4 import BeautifulSoup
 
-# 从测试号信息获取
+
 appID = os.environ.get("APP_ID")
 appSecret = os.environ.get("APP_SECRET")
 openId_str = os.environ.get("OPEN_ID")
@@ -16,12 +16,12 @@ today = date.today()
 year = today.year
 month = today.month
 day = today.day
-url = 'http://www.ogimet.com/cgi-bin/gsynres?lang=en&ind=54218&ndays=1&ano={}&mes={}&day={}&hora=00&ord=REV&Send=Send'\
+url_ = 'http://www.ogimet.com/cgi-bin/gsynres?lang=en&ind=54218&ndays=1&ano={}&mes={}&day={}&hora=00&ord=REV&Send=Send'\
     .format(year,month,day)
 
 def get_weather():
     # 发送GET请求获取网页代码
-    response = requests.get(url)
+    response = requests.get(url_)
     html = response.text
     # 使用BeautifulSoup解析网页代码
     soup = BeautifulSoup(html, 'html.parser')
@@ -51,7 +51,7 @@ def send_weather(access_token, weather, openId):
     body = {
         "touser": openId.strip(),
         "template_id": uid,
-        "url": url,
+        "url": url_,
         "data": {
             "Date": {
                 "value": today
