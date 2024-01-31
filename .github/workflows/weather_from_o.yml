@@ -35,4 +35,4 @@ jobs:
         APP_ID: ${{ secrets.APP_ID }}
         APP_SECRET: ${{ secrets.APP_SECRET }}
         OPEN_ID: ${{ secrets.OPEN_ID }}
-        TEMPLATE_ID_ogimet: ${{ secrets.TEMPLATE_ID_ogimet }}
+        TEMPLATE_ID_OGIMET: ${{ secrets.TEMPLATE_ID_OGIMET }}

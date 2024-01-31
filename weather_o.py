@@ -9,7 +9,7 @@ appSecret = os.environ.get("APP_SECRET")
 # 收信人ID即 用户列表中的微信号
 openId_str = os.environ.get("OPEN_ID")
 # 天气预报模板ID
-weather_template_id = os.environ.get("TEMPLATE_ID_ogimet")
+weather_template_id = os.environ.get("TEMPLATE_ID_OGIMET")
 
 # 将OPEN_ID字符串转换为数组
 openId_list = openId_str.split(",")
