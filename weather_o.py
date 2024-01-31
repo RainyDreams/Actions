@@ -23,10 +23,8 @@ def get_third_row(url):
     soup = BeautifulSoup(html, 'html.parser')
     # 找到所有的table元素
     tables = soup.find_all('table')
-    # 确保至少存在5个table
     if len(tables) < 3:
         raise ValueError("网页中至少需要5个table元素")
-    # 找到第5个table元素
     target_table = tables[2]
     # 找到第三行(tr)
     third_row = target_table.find_all('tr')[2]
